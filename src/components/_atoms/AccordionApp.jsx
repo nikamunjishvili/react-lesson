@@ -4,6 +4,7 @@ import { data } from "../../data/data";
 
 const AccordionApp = () => {
   const [showItem, setShowItem] = useState(0);
+  
   return (
     <div>
       {data.map((item) => {
