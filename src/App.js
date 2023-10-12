@@ -1,58 +1,66 @@
-import { useEffect, useState } from "react";
-import Accordion from "./components/_atoms/Accordion";
+import { useState } from "react";
+import { createGlobalStyle, styled } from "styled-components";
+import Send from "./components/Icons/send";
+import OvalImage from './assets/Oval.png';
 
-const data = [
-  {
-    title: "title_1",
-    content: "content_1",
-    number: 1,
-  },
-  {
-    title: "title_2",
-    content: "content_2",
-    number: 2,
-  },
-  {
-    title: "title_3",
-    content: "content_3",
-    number: 3,
-  },
-  {
-    title: "title_4",
-    content: "content_4",
-    number: 4,
-  },
-];
+import {
+  Button,
+  Wrapper,
+  Header,
+  Ul,
+  Li,
+  CloseIconWrapper,
+} from "./components/styles/AppStyled";
+import Home from "./pages/Home";
 
 function App() {
-  const [text, setText] = useState("");
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    setCount(count + 1);
-  }, [text, setText]);
+  const [show, setShow] = useState(false);
 
   return (
-    <div className="App">
-      {data.map((item) => {
-        return (
-          <div>
-            <Accordion
-              title={item.title}
-              content={item.content}
-              number={item.number}
-            />
-          </div>
-        );
-      })}
-      <div>მომხმარებელმა ჩაწერა: {count}</div>
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-    </div>
+    <Wrapper>
+      {/* <BodyStyles OvalImage={OvalImage} />
+      <Header>
+        {show && (
+          <Ul>
+            <Li>Home</Li>
+            <Li>Contact</Li>
+            <Li>About</Li>
+            <Li>Profile</Li>
+          </Ul>
+        )}
+        <CloseIconWrapper>
+          <Button saxeli onClick={() => setShow(!show)}>
+            {!show ? "open" : "close"}
+          </Button>
+        </CloseIconWrapper>
+      </Header>
+      <NewButton>click</NewButton>
+      <Send width={300} height={100} color='red'/>
+      <Image src={OvalImage} /> */}
+      <Home />
+    </Wrapper>
   );
 }
 
 export default App;
+
+const BodyStyles = createGlobalStyle`
+body{
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url(${(props) => props.OvalImage});
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+`;
+
+const NewButton = styled(Button)`
+  color: gold;
+  background-color: darkred;
+`;
+
+const Image = styled.img`
+
+`
