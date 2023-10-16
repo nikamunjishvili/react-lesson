@@ -1,17 +1,22 @@
 import React from "react";
 import MainLayout from "../components/layouts/MainLayout";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const EditProfile = () => {
-//   let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams();
 
-//   let searchParamss = searchParams.getAll("profile:id");
-
-//   console.log(searchParamss);
+  const names = "gega";
+  const handleAddQueryParams = () => {
+    setSearchParams({
+      set: "shop",
+      values:names
+    })
+  }
+  console.log(searchParams);
   return (
     <MainLayout>
       <h1>This is EditProfile Page!!</h1>
-      <Link to="/">Go back home</Link>
+      <button onClick={handleAddQueryParams}>click</button>
     </MainLayout>
   );
 };
